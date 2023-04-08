@@ -1,3 +1,5 @@
+//灯哥开源，转载请著名出处
+//仅在DengFOC上测试过
 //PWM输出引脚定义
 int pwmA = 32;
 int pwmB = 33;
