@@ -1,7 +1,7 @@
 # DengFOC 极简FOC库 -- 开源
 
 
-# 课程教案 和 将来的库文档,请访问：dengfoc.com
+# 课程教案 和 库文档,请访问：dengfoc.com
 
 ## 1 概述
 
