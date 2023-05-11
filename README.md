@@ -28,7 +28,7 @@ DengFOC 库是灯哥开源的，基于 Arduino 和 ESP32 硬件开发的开源 F
 
 2 [DengFOC硬件 Github](https://github.com/ToanTech/Deng-s-foc-controller)
 
-3 [DengFOC官网](dengfoc.com) 包含课程文字版讲义，DengFOC使用文档，库使用方法等。
+3 [DengFOC官网]((http://dengfoc.com/#/) 包含课程文字版讲义，DengFOC使用文档，库使用方法等。
 
 ## 2 社区
 
