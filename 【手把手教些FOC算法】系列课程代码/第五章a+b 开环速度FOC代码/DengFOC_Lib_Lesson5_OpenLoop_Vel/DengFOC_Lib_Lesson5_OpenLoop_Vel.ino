@@ -10,7 +10,6 @@ int pwmC = 25;
 //宏定义实现的一个约束函数,用于限制一个值的范围。
 //具体来说，该宏定义的名称为 _constrain，接受三个参数 amt、low 和 high，分别表示要限制的值、最小值和最大值。该宏定义的实现使用了三元运算符，根据 amt 是否小于 low 或大于 high，返回其中的最大或最小值，或者返回原值。
 //换句话说，如果 amt 小于 low，则返回 low；如果 amt 大于 high，则返回 high；否则返回 amt。这样，_constrain(amt, low, high) 就会将 amt 约束在 [low, high] 的范围内。
-float voltage_limit=10;
 float voltage_power_supply=12.6;
 float shaft_angle=0,open_loop_timestamp=0;
 float zero_electric_angle=0,Ualpha,Ubeta=0,Ua=0,Ub=0,Uc=0,dc_a=0,dc_b=0,dc_c=0;
@@ -53,10 +52,6 @@ float _normalizeAngle(float angle){
 // 设置PWM到控制器输出
 void setPwm(float Ua, float Ub, float Uc) {
 
-  // 限制上限
-  Ua = _constrain(Ua, 0.0f, voltage_limit);
-  Ub = _constrain(Ub, 0.0f, voltage_limit);
-  Uc = _constrain(Uc, 0.0f, voltage_limit);
   // 计算占空比
   // 限制占空比从0到1
   dc_a = _constrain(Ua / voltage_power_supply, 0.0f , 1.0f );
@@ -99,8 +94,9 @@ float velocityOpenloop(float target_velocity){
   //以目标速度为 10 rad/s 为例，如果时间间隔是 1 秒，则在每个循环中需要增加 10 * 1 = 10 弧度的角度变化量，才能使电机转动到目标速度。
   //如果时间间隔是 0.1 秒，那么在每个循环中需要增加的角度变化量就是 10 * 0.1 = 1 弧度，才能实现相同的目标速度。因此，电机轴的转动角度取决于目标速度和时间间隔的乘积。
 
-  // 使用早前设置的voltage_limit作为Uq值，这个值会直接影响输出力矩
-  float Uq = voltage_limit;
+  // 使用早前设置的voltage_power_supply的1/3作为Uq值，这个值会直接影响输出力矩
+  // 最大只能设置为Uq = voltage_power_supply/2，否则ua,ub,uc会超出供电电压限幅
+  float Uq = voltage_power_supply/3;
   
   setPhaseVoltage(Uq,  0, _electricalAngle(shaft_angle, 7));
   
