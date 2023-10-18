@@ -55,6 +55,7 @@ DengFOC 库是灯哥开源的，基于 Arduino 和 ESP32 硬件开发的开源 F
 3. 在线电流检测
 4. 角度闭环（力位闭环）
 5. 力角度闭环（位置+速度+力闭环）
+5. 电流力矩闭环
 
 下面用力+位置闭环代码（力位闭环，力作为内环，位置作为外环），来示范 DengFOC 库的代码编写，更多有关于库函数的说明，请查看[DengFOC官网](dengfoc.com) 。
 
@@ -118,7 +119,9 @@ void loop()
 
 8b [【手把手教写FOC算法】8b_精确电流力矩环代码编程+硬件调试教学](https://www.bilibili.com/video/BV1Sh4y1Q7ue/?spm_id_from=333.999.0.0)
 
+9a[【手把手教写FOC算法】9a_用电流环改进速度和位置闭环-前置知识](https://www.bilibili.com/video/BV1Zy4y1A7pL/)
 
+9b[【手把手教写FOC算法】9b_电流环改进速度和位置闭环代码编程+硬件调试教学](https://www.bilibili.com/video/BV1dy4y1N798/)
 
 ## 5 DengFOC爱好者拓展支持
 
