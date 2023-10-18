@@ -57,34 +57,34 @@ DengFOC 库是灯哥开源的，基于 Arduino 和 ESP32 硬件开发的开源 F
 5. 力角度闭环（位置+速度+力闭环）
 5. 电流力矩闭环
 
-下面用力+位置闭环代码（力位闭环，力作为内环，位置作为外环），来示范 DengFOC 库的代码编写，更多有关于库函数的说明，请查看[DengFOC官网](dengfoc.com) 。
+下面用力+位置闭环代码（力位闭环，电流力矩环作为内环，位置作为外环），来示范 DengFOC 库的代码编写，更多有关于库函数的说明，请查看[DengFOC官网](dengfoc.com) 。
 
-### 3.1 双电机力位闭环（基于Voltage）
+### 3.1 电机力位闭环（基于电流力矩环）
 
 ```c++
-#include "DengFOC.h"        //库导入
+#include "DengFOC.h"
 
-int Sensor_DIR=-1;          //传感器方向设置
-int Motor_PP=7;             //电机极对数
+int Sensor_DIR=-1;    //传感器方向
+int Motor_PP=7;    //电机极对数
 
 void setup() {
   Serial.begin(115200);
-  DFOC_Vbus(12.6);         //设定驱动器供电电压为12.6V
-  DFOC_alignSensor(Motor_PP,Sensor_DIR);     //校准传感器
+  DFOC_Vbus(12.6);   //设定驱动器供电电压
+  DFOC_alignSensor(Motor_PP,Sensor_DIR);
 }
 
 void loop() 
 {
-  //输出角度值
-  //Serial.print("当前角度：");
-  //Serial.println(DFOC_M0_Angle());
-  //输出角度值
-  float Kp=0.133;    //设置力位闭环Kp值
-  float Sensor_Angle=DFOC_M0_Angle();
-  setTorque(Kp*(serial_motor_target()-Sensor_DIR*Sensor_Angle)*180/PI,_electricalAngle());   //位置闭环
-  serialReceiveUserCommand();
-}
 
+  //设置PID
+  DFOC_M0_SET_ANGLE_PID(0.5,0,0.003,100000,0.1);   //角度PID
+  DFOC_M0_SET_CURRENT_PID(1.25,50,0,100000);       //电流环PID
+  DFOC_M0_set_Force_Angle(serial_motor_target());  //力位控制指令
+
+  //接收串口
+  serialReceiveUserCommand();
+
+}
 ```
 
 ## 4 免费手把手教写FOC算法原理课
