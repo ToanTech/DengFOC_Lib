@@ -30,11 +30,15 @@ CurrSense::CurrSense(int Mot_Num)
     
     volts_to_amps_ratio = 1.0f /_shunt_resistor / amp_gain; // volts to amps
     
-    // gains for each phase
-    // gain_a = volts_to_amps_ratio*-1;
-    // gain_b = volts_to_amps_ratio*-1;
-    gain_a = volts_to_amps_ratio;
-    gain_b = volts_to_amps_ratio; //v4无须取负
+    // DengFOC V3P
+     gain_a = volts_to_amps_ratio*-1;
+     gain_b = volts_to_amps_ratio*-1;
+     
+    // DengFOC V4
+//    gain_a = volts_to_amps_ratio;
+//    gain_b = volts_to_amps_ratio;
+
+    
     gain_c = volts_to_amps_ratio;
   }
   if(Mot_Num==1)
@@ -47,11 +51,14 @@ CurrSense::CurrSense(int Mot_Num)
     
     volts_to_amps_ratio = 1.0f /_shunt_resistor / amp_gain; // volts to amps
     
-    // gains for each phase
-    // gain_a = volts_to_amps_ratio*-1;
-    // gain_b = volts_to_amps_ratio*-1;
-    gain_a = volts_to_amps_ratio;
-    gain_b = volts_to_amps_ratio; //v4无须取负
+    // DengFOC V3P
+     gain_a = volts_to_amps_ratio*-1;
+     gain_b = volts_to_amps_ratio*-1;
+     
+    // DengFOC V4
+//    gain_a = volts_to_amps_ratio;
+//    gain_b = volts_to_amps_ratio;
+
     gain_c = volts_to_amps_ratio;
   }
 }

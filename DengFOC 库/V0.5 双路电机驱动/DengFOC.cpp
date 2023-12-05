@@ -341,7 +341,7 @@ float DFOC_M1_Velocity()
 {
   //获取速度数据并滤波
   float vel_M1_ori=S1.getVelocity();
-  float vel_M1_flit=M0_Vel_Flt(M1_DIR*vel_M1_ori);
+  float vel_M1_flit=M1_Vel_Flt(M1_DIR*vel_M1_ori);
   return vel_M1_flit;   //考虑方向
 }
 
