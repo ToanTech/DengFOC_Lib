@@ -129,12 +129,12 @@ void DFOC_Vbus(float power_supply)
   pinMode(pwmA, OUTPUT);
   pinMode(pwmB, OUTPUT);
   pinMode(pwmC, OUTPUT);
-  ledcAttachPin(pwmA, 0);
-  ledcAttachPin(pwmB, 1);
-  ledcAttachPin(pwmC, 2);
   ledcSetup(0, 30000, 8);  //pwm频道, 频率, 精度
   ledcSetup(1, 30000, 8);  //pwm频道, 频率, 精度
   ledcSetup(2, 30000, 8);  //pwm频道, 频率, 精度
+  ledcAttachPin(pwmA, 0);
+  ledcAttachPin(pwmB, 1);
+  ledcAttachPin(pwmC, 2);
   Serial.println("完成PWM初始化设置");
 
   //AS5600

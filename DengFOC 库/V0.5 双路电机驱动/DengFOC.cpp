@@ -225,18 +225,18 @@ void DFOC_Vbus(float power_supply)
   pinMode(M1_pwmA, OUTPUT);
   pinMode(M1_pwmB, OUTPUT);
   pinMode(M1_pwmC, OUTPUT);
-  ledcAttachPin(M0_pwmA, 0);
-  ledcAttachPin(M0_pwmB, 1);
-  ledcAttachPin(M0_pwmC, 2);
-  ledcAttachPin(M1_pwmA, 3);
-  ledcAttachPin(M1_pwmB, 4);
-  ledcAttachPin(M1_pwmC, 5);
   ledcSetup(0, 30000, 8);  //pwm频道, 频率, 精度
   ledcSetup(1, 30000, 8);  //pwm频道, 频率, 精度
   ledcSetup(2, 30000, 8);  //pwm频道, 频率, 精度
   ledcSetup(3, 30000, 8);  //pwm频道, 频率, 精度
   ledcSetup(4, 30000, 8);  //pwm频道, 频率, 精度
   ledcSetup(5, 30000, 8);  //pwm频道, 频率, 精度
+  ledcAttachPin(M0_pwmA, 0);
+  ledcAttachPin(M0_pwmB, 1);
+  ledcAttachPin(M0_pwmC, 2);
+  ledcAttachPin(M1_pwmA, 3);
+  ledcAttachPin(M1_pwmB, 4);
+  ledcAttachPin(M1_pwmC, 5);
   Serial.println("完成PWM初始化设置");
   pinMode(enable,OUTPUT); // 设置使能引脚
 
