@@ -10,11 +10,11 @@
 
 void setup() {
   Serial.begin(115200);
+  DFOC_enable();
   DFOC_Vbus(12.6);   //设定驱动器供电电压
   DFOC_M0_alignSensor(7,-1);
   DFOC_M1_alignSensor(7,-1);
   //DFOC_M1_alignSensor(7,1);
-  DFOC_enable();
   
 }
 
